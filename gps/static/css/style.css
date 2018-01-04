@@ -1,0 +1,31 @@
+header{
+    background-color: rgb(0,110,255);
+}
+
+.add_flight{
+    margin-left: auto;
+    margin-right: 4em;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    width: 6em;
+}
+
+.center{
+    text-align: center;
+}
+
+.flight{
+    font-size: 40px; 
+}
+
+.back{
+    background-color: #E4E2E0;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5em;
+}
+
+#map {
+    height: 100%;
+}
