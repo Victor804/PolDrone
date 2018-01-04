@@ -9,7 +9,7 @@ import gpxpy.gpx
 
 def home(request):
     processingnode = ProcessingNode.objects.all()
-    return render(request, 'home/index.html', {'processingnodes': processingnode})
+    return render(request, 'home.html', {'processingnodes': processingnode})
 
 def add_flight(request):
     if request.method == 'POST':
@@ -22,7 +22,7 @@ def add_flight(request):
         
     else:
         form = ProcessingNodeForm()
-        return render(request, 'form/index.html', {"form": form})
+        return render(request, 'form.html', {"form": form})
 
 
 def delete_flight(request, id):
@@ -45,5 +45,5 @@ def mapsviews(request, id):
                 flightcoodinates.append("{"+"lat:{0}, lng:{1}".format(point.latitude, point.longitude)+"},")
     center = flightcoodinates[0]
     flightcoodinates = "".join(flightcoodinates)
-    return render(request, 'maps/index.html', {"flightcoodinates": flightcoodinates}, {"center": center})
+    return render(request, 'maps.html', {"flightcoodinates": flightcoodinates}, {"center": center})
     
