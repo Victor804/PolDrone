@@ -3,6 +3,7 @@ from django.http import *
 from forms import ProcessingNodeForm
 from models import ProcessingNode
 from django.http import Http404
+from django.conf import settings
 import gpxpy
 import gpxpy.gpx
 
@@ -12,10 +13,8 @@ def home(request):
 
 def add_flight(request):
     if request.method == 'POST':
-        form = ProcessingNodeForm(request.POST)
-        print form.errors
+        form = ProcessingNodeForm(request.POST, request.FILES)
         if form.is_valid():  
-            print form
             form.save()
             return HttpResponseRedirect('/')
         else:
@@ -36,7 +35,7 @@ def mapsviews(request, id):
     queryset = ProcessingNode.objects.all()
     instance = get_object_or_404(queryset, id=id)
     path_gpx = instance.gpx
-    gpx_file = open(unicode(path_gpx), 'r')
+    gpx_file = open(settings.MEDIA_ROOT + str(path_gpx), 'r')
     
     gpx = gpxpy.parse(gpx_file)
     flightcoodinates = []

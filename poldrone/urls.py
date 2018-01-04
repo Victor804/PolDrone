@@ -14,20 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import *
-from rest_framework import routers
 from gps.views import *
-from django.contrib.auth.decorators import login_required
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-import xadmin
 
-xadmin.autodiscover()
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^xadmin/', include(xadmin.site.urls)),
     url(r'^$', home, name='home'),
     url(r'^add_flight/$', add_flight, name='add_flight'),
     url(r'delete/(?P<id>\d+)/$', delete_flight),
