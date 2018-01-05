@@ -4,6 +4,7 @@ from forms import ProcessingNodeForm
 from models import ProcessingNode
 from django.http import Http404
 from django.conf import settings
+from django.template import Context
 import gpxpy
 import gpxpy.gpx
 
@@ -43,7 +44,9 @@ def mapsviews(request, id):
         for segment in track.segments:
             for point in segment.points:
                 flightcoodinates.append("{"+"lat:{0}, lng:{1}".format(point.latitude, point.longitude)+"},")
-    center = flightcoodinates[0]
+    center = flightcoodinates[0][:-1]
+    
     flightcoodinates = "".join(flightcoodinates)
-    return render(request, 'maps.html', {"flightcoodinates": flightcoodinates}, {"center": center})
+    gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
+    return render(request, 'maps.html', Context(gpsdata))
     

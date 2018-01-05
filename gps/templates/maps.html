@@ -4,12 +4,12 @@
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 49.2, lng: 0.69},
+          zoom: 17,
+          center: {{ gpsdata.center }},
           mapTypeId: 'terrain'
         });
 
-        var flightPlanCoordinates = [{{ flightcoodinates }}];
+        var flightPlanCoordinates = [{{ gpsdata.flightcoodinates }}];
         var flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
