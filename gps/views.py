@@ -5,8 +5,7 @@ from models import ProcessingNode
 from django.http import Http404
 from django.conf import settings
 from django.template import Context
-import gpxpy
-import gpxpy.gpx
+from gps.analysers import maps
 
 def home(request):
     processingnode = ProcessingNode.objects.all()
@@ -37,16 +36,8 @@ def mapsviews(request, id):
     instance = get_object_or_404(queryset, id=id)
     path_gpx = instance.gpx
     gpx_file = open(settings.MEDIA_ROOT + str(path_gpx), 'r')
-    
-    gpx = gpxpy.parse(gpx_file)
-    flightcoodinates = []
-    for track in gpx.tracks:
-        for segment in track.segments:
-            for point in segment.points:
-                flightcoodinates.append("{"+"lat:{0}, lng:{1}".format(point.latitude, point.longitude)+"},")
-    center = flightcoodinates[0][:-1]
-    
-    flightcoodinates = "".join(flightcoodinates)
-    gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
+    gpsdata = maps(gpx_file)
     return render(request, 'maps.html', Context(gpsdata))
-    
+
+def analyse(request, id):
+    return render(request, 'analyse.html')
