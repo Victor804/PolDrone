@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^add_flight/$', add_flight, name='add_flight'),
     url(r'delete/(?P<id>\d+)/$', delete_flight),
     url(r'maps/(?P<id>\d+)/$', mapsviews),
+    url(r'analyse/(?P<id>\d+)/$', analyse),
 ]
 
 if settings.DEBUG:
