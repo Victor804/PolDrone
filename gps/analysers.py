@@ -1,15 +1,17 @@
-import gpxpy
-import gpxpy.gpx 
+from lxml import etree
 
-def maps(gpx_file):
-    gpx = gpxpy.parse(gpx_file)
+def extract_xml_to_maps(xml_file):
+    tree = etree.parse(xml_file)
     flightcoodinates = []
-    for track in gpx.tracks:
-        for segment in track.segments:
-            for point in segment.points:
-                flightcoodinates.append("{"+"lat:{0}, lng:{1}".format(point.latitude, point.longitude)+"},")
-    center = flightcoodinates[0][:-1]
+    for coordinates in tree.xpath("/trkseg/trkpt"):
+        latitude = coordinates.get("lat")
+        longitude = coordinates.get("lon")
+        latitude = (latitude[0:2]+"."+latitude[2:])
+        longitude = (longitude[0:1]+"."+longitude[1:])
+        flightcoodinates.append("{"+"lat:{0}, lng:{1}".format(latitude, longitude)+"},")
     
+    center = flightcoodinates[0][:-1]
     flightcoodinates = "".join(flightcoodinates)
     gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
     return gpsdata
+

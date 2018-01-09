@@ -5,7 +5,7 @@ from models import ProcessingNode
 from django.http import Http404
 from django.conf import settings
 from django.template import Context
-from gps.analysers import maps
+from gps.analysers import extract_xml_to_maps
 
 def home(request):
     processingnode = ProcessingNode.objects.all()
@@ -34,9 +34,9 @@ def delete_flight(request, id):
 def mapsviews(request, id):
     queryset = ProcessingNode.objects.all()
     instance = get_object_or_404(queryset, id=id)
-    path_gpx = instance.gpx
-    gpx_file = open(settings.MEDIA_ROOT + str(path_gpx), 'r')
-    gpsdata = maps(gpx_file)
+    path_xml_file = instance.xml_file
+    xml_file = open(settings.MEDIA_ROOT + str(path_xml_file), 'r')
+    gpsdata = extract_xml_to_maps(xml_file)
     return render(request, 'maps.html', Context(gpsdata))
 
 def analyse(request, id):
