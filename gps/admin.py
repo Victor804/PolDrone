@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProcessingNode
+from .models import ProcessingNode, Project
 # Register your models here.
 
-admin.site.register(ProcessingNode)
+admin.site.register(Project)

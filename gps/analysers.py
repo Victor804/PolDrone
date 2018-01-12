@@ -15,3 +15,5 @@ def extract_xml_to_maps(xml_file):
     gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
     return gpsdata
 
+
+        

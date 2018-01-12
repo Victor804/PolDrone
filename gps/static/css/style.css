@@ -2,7 +2,7 @@ header{
     background-color: rgb(0,110,255);
 }
 
-.add_flight{
+.add{
     margin-left: auto;
     margin-right: 4em;
     margin-top: 3em;
@@ -12,6 +12,10 @@ header{
 
 .center{
     text-align: center;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5em;
 }
 
 .flight{
@@ -24,6 +28,12 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5em;
+}
+
+.line{
+    width: 250px;
+    height: 1px;
+    background: #a0a0a0;
 }
 
 #map {

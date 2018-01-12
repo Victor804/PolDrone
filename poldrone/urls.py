@@ -25,9 +25,12 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home, name='home'),
     url(r'^add_flight/$', add_flight, name='add_flight'),
-    url(r'delete/(?P<id>\d+)/$', delete_flight),
+    url(r'delete_flight/(?P<id>\d+)/$', delete_flight),
     url(r'maps/(?P<id>\d+)/$', mapsviews),
     url(r'analyse/(?P<id>\d+)/$', analyse),
+    url(r'^add_project/$', add_project, name='add_project'),
+    url(r'delete_project/(?P<id>\d+)/$', delete_project),
+
 ]
 
 if settings.DEBUG:

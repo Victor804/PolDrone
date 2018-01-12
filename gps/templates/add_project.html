@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <form action="{% url 'add_project' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <br>
+        <input type="submit" value="Ajouter" />
+
+    </form>
+
+{% endblock %}
