@@ -15,5 +15,11 @@ def extract_xml_to_maps(xml_file):
     gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
     return gpsdata
 
+class Pie_chart(object):
+    def __init__(self):
+        self.tree = etree.parse(xml_file)
+
+    def extract_ppm(self):
+        pass
 
         

@@ -13,6 +13,7 @@
     </table>
     <div class="line center"></div>
     {% for processingnode in homedata.processingnodes %}
+    {%if processingnode.project.name == project.name %}
     <table class="back">
         <tr><td colspan="2"><h2 class="center">{{ processingnode.name }}</h2></td></tr>
         <tr><td colspan="2"><h4>{{ processingnode.time }}</h4></td></tr>
@@ -23,6 +24,7 @@
             <td><a href="/analyse/{{processingnode.id}}"><img src="{% static "images/graph.png" %}" alt="graph" width="25" height="20"/></a></td>
         </tr>
     </table>
+    {% endif %}
     {% endfor %}
     {% endfor %}
 {% endblock %}
