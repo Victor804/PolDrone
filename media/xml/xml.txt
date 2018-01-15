@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <trkseg>
     <trkpt lat="48365375" lon="007409373">
-        <hour>064036.289</hour>
-        <gaz co2="100" nh3="150" nox="200"><>
+        <hour>0</hour>
+        <gaz time="0" co2="100" nh3="150" nox="200"></gaz>
     </trkpt>
     <trkpt lat="58365375" lon="007409373">
-    <hour>064036.289</hour>
-    <co2>90</co2>
-    <nh3>110</nh3>
-    <nox>250</nox>
+        <hour>5</hour>
+        <gaz time="5" co2="90" nh3="110" nox="250"></gaz>
     </trkpt>
 </trkseg>
 

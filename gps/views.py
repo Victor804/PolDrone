@@ -5,7 +5,7 @@ from models import ProcessingNode, Project
 from django.http import Http404
 from django.conf import settings
 from django.template import Context
-from gps.analysers import extract_xml_to_maps
+from gps.analysers import extract_xml_to_maps, Charts
 
 def home(request):
     processingnodes = ProcessingNode.objects.all()
@@ -61,4 +61,10 @@ def delete_project(request, id):
     return HttpResponseRedirect('/')
 
 def analyse(request, id):
-    return render(request, 'analyse.html')
+    queryset = ProcessingNode.objects.all()
+    instance = get_object_or_404(queryset, id=id)
+    path_xml_file = instance.xml_file
+    xml_file = open(settings.MEDIA_ROOT + str(path_xml_file), 'r')
+    charts = Charts(xml_file)
+    data = charts.curve_chart()
+    return render(request, 'analyse.html', {"data": data})

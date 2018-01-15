@@ -15,11 +15,12 @@ def extract_xml_to_maps(xml_file):
     gpsdata = {"gpsdata":{"center": center, "flightcoodinates": flightcoodinates}}
     return gpsdata
 
-class Pie_chart(object):
-    def __init__(self):
+class Charts(object):
+    def __init__(self, xml_file):
         self.tree = etree.parse(xml_file)
-
-    def extract_ppm(self):
-        pass
-
         
+    def curve_chart(self):
+        data = [['time', 'CO2', 'NH3', 'NOx']]
+        for point in self.tree.xpath("/trkseg/trkpt/gaz"):
+            data.append([point.get("time"), int(point.get("co2")), int(point.get("nh3")), int(point.get("nox"))])
+        return data
