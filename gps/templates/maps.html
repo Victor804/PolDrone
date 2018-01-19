@@ -5,11 +5,11 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 17,
-          center: {{ gpsdata.center }},
+          center: {{ gpsdata.first_point|safe }},
           mapTypeId: 'terrain'
         });
 
-        var flightPlanCoordinates = [{{ gpsdata.flightcoodinates }}];
+        var flightPlanCoordinates = {{ gpsdata.flightcoordinates|safe }};
         var flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
@@ -17,11 +17,24 @@
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
-
         flightPath.setMap(map);
+        setMarkers(map);
+      }
+      var points = {{ gpsdata.list_points|safe }}
+      function setMarkers(map){
+        for(var i=0; i<points.length; i++){
+            var point = points[i];
+            var marker = new google.maps.Marker({
+              position: point[1],
+              map: map,
+              title: point[0]
+        });
+       }
       }
     </script>
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Rmm8vlCOfRDWz5x1jH1gUlto3qNvhjI&callback=initMap">
     </script>
+
 {% endblock %}

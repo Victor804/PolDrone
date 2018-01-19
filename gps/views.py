@@ -68,3 +68,6 @@ def analyse(request, id):
     charts = Charts(xml_file)
     data = charts.curve_chart()
     return render(request, 'analyse.html', {"data": data})
+
+def point(request, id):
+    pass

@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'analyse/(?P<id>\d+)/$', analyse),
     url(r'^add_project/$', add_project, name='add_project'),
     url(r'delete_project/(?P<id>\d+)/$', delete_project),
-
+    url(r'point/(?P<id>\d+)/$', point)
 ]
 
 if settings.DEBUG:
