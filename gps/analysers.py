@@ -14,7 +14,7 @@ def extract_xml_to_maps(xml_file):
         
     first_point = flightcoordinates[0]
     for point in flightcoordinates:
-        list_points.append(["'Point{}', {}, {}".format(index, str(point).replace("'", ""), index)])
+        list_points.append(["'Point {}', {}, {}".format(index, str(point).replace("'", ""), index)])
         index+=1
         
     gpsdata = {"gpsdata":{"first_point": str(first_point).replace("'", ""), "flightcoordinates": str(flightcoordinates).replace("'", ""), "list_points": str(list_points).replace('"', "")}}

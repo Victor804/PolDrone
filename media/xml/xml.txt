@@ -8,6 +8,10 @@
         <hour>5</hour>
         <gaz time="5" co2="90" nh3="110" nox="250"></gaz>
     </trkpt>
+    <trkpt lat="29666315" lon="023609373">
+        <hour>10</hour>
+        <gaz time="10" co2="90" nh3="110" nox="250"></gaz>
+    </trkpt>
 </trkseg>
 
     

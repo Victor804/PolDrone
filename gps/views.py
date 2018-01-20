@@ -70,4 +70,4 @@ def analyse(request, id):
     return render(request, 'analyse.html', {"data": data})
 
 def point(request, id):
-    pass
+    return render(request, 'point.html')

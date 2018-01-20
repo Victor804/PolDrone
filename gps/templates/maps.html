@@ -23,16 +23,27 @@
       var points = {{ gpsdata.list_points|safe }}
       function setMarkers(map){
         for(var i=0; i<points.length; i++){
+            var content = '<p>Plus d informations:<a href="http://127.0.0.1:8000/point/'+i+'">Point '+i+'</a></p>'
+            var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+
             var point = points[i];
             var marker = new google.maps.Marker({
               position: point[1],
               map: map,
               title: point[0]
-        });
-       }
+            });
+            google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                return function() {
+                    infowindow.setContent(content);
+                    infowindow.open(map,marker);
+                };
+            })(marker,content,infowindow));  
+
+        }
       }
     </script>
-    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Rmm8vlCOfRDWz5x1jH1gUlto3qNvhjI&callback=initMap">
     </script>
