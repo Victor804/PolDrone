@@ -1,21 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import *
-from forms import ProcessingNodeForm, ProjectForm
-from models import ProcessingNode, Project
+from forms import FlightForm, ProjectForm
+from models import Flight, Project
 from django.http import Http404
-from django.conf import settings
 from django.template import Context
-from gps.analysers import extract_xml_to_maps, Charts
+from gps.analysers import Charts, Point_model, Maps
 
 def home(request):
-    processingnodes = ProcessingNode.objects.all()
+    flight = Flight.objects.all()
     projects = Project.objects.all()
-    homedata = {"homedata":{"processingnodes": processingnodes, "projects": projects}}
+    homedata = {"homedata":{"flight": flight, "projects": projects}}
     return render(request, 'home.html', homedata)
 
 def add_flight(request):
     if request.method == 'POST':
-        form = ProcessingNodeForm(request.POST, request.FILES)
+        form = FlightForm(request.POST, request.FILES)
         if form.is_valid():  
             form.save()
             return HttpResponseRedirect('/')
@@ -23,23 +22,20 @@ def add_flight(request):
             raise Http404
         
     else:
-        form = ProcessingNodeForm()
+        form = FlightForm()
         return render(request, 'add_flight.html', {"form": form})
 
 
 def delete_flight(request, id):
-    queryset = ProcessingNode.objects.all()
+    queryset = Flight.objects.all()
     instance = get_object_or_404(queryset, id=id)
     instance.delete()
     return HttpResponseRedirect('/')
 
 def mapsviews(request, id):
-    queryset = ProcessingNode.objects.all()
-    instance = get_object_or_404(queryset, id=id)
-    path_xml_file = instance.xml_file
-    xml_file = open(settings.MEDIA_ROOT + str(path_xml_file), 'r')
-    gpsdata = extract_xml_to_maps(xml_file)
-    return render(request, 'maps.html', Context(gpsdata))
+    maps = Maps(id)
+    data = maps.context()
+    return render(request, 'maps.html', Context(data))
 
 def add_project(request):
     if request.method == 'POST':
@@ -61,13 +57,11 @@ def delete_project(request, id):
     return HttpResponseRedirect('/')
 
 def analyse(request, id):
-    queryset = ProcessingNode.objects.all()
-    instance = get_object_or_404(queryset, id=id)
-    path_xml_file = instance.xml_file
-    xml_file = open(settings.MEDIA_ROOT + str(path_xml_file), 'r')
-    charts = Charts(xml_file)
+    charts = Charts(id)
     data = charts.curve_chart()
     return render(request, 'analyse.html', {"data": data})
 
 def point(request, id):
-    return render(request, 'point.html')
+    point = Point_model(id)
+    data = point.view()
+    return render(request, 'point.html', {"data":data})

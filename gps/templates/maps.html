@@ -5,11 +5,14 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 17,
-          center: {{ gpsdata.first_point|safe }},
+          center: {lat:{{data.center.lat|safe }}, lng:{{ data.center.lon|safe }}},
           mapTypeId: 'terrain'
         });
 
-        var flightPlanCoordinates = {{ gpsdata.flightcoordinates|safe }};
+        var flightPlanCoordinates = [{% for point in data.points %}
+        {lat:{{ point.lat|safe }}, lng: {{ point.lon|safe }}},{% endfor %}
+        ];
+        
         var flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
@@ -20,19 +23,22 @@
         flightPath.setMap(map);
         setMarkers(map);
       }
-      var points = {{ gpsdata.list_points|safe }}
+      var points = [{% for point in data.points %}
+        {id:{{ point.id|safe }}, lat:{{ point.lat|safe }}, lng: {{ point.lon|safe }}},{% endfor %}
+        ];
       function setMarkers(map){
         for(var i=0; i<points.length; i++){
-            var content = '<p>Plus d informations:<a href="http://127.0.0.1:8000/point/'+i+'">Point '+i+'</a></p>'
+            var point = points[i];
+            
+            var content = '<p>Plus d informations:<a href="http://127.0.0.1:8000/point/'+point.id+'">Point '+i+'</a></p>'
             var infowindow = new google.maps.InfoWindow({
               content: content
             });
 
-            var point = points[i];
             var marker = new google.maps.Marker({
-              position: point[1],
+              position: {lat: point.lat, lng: point.lng},
               map: map,
-              title: point[0]
+              title: "Point "+i
             });
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
                 return function() {

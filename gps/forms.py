@@ -1,9 +1,9 @@
 from django import forms 
-from models import ProcessingNode, Project
+from models import Flight, Project
 
-class ProcessingNodeForm(forms.ModelForm):
+class FlightForm(forms.ModelForm):
     class Meta:
-        model = ProcessingNode
+        model = Flight
         fields = "__all__" 
         
 class ProjectForm(forms.ModelForm):
