@@ -11,7 +11,9 @@
     </head>
     <body>
         <header>
-            <a href="{% url 'home' %}"><img src="{% static "images/logo.jpg" %}" alt="logo" width="100" height="50"/></a>
+            <a style="vertical-align:middle" href="{% url 'home' %}"><img src="{% static "images/logo.jpg" %}" alt="logo" width="100" height="50"/></a>
+            <h4 class="nav_bar"><a href="{% url 'add_project' %}">Ajouter un projet</a></h4>
+            <h4 class="nav_bar"><a href="{% url 'add_flight' %}">Ajouter un vol</a></h4>
         </header>
         {% block content %}
         {% endblock %}

@@ -5,13 +5,13 @@ from django.conf import settings
 class Charts(object):
     def __init__(self, id):
         self.id = id
-        
+        self.point = Point_model(id)
     def curve_chart(self):
+        self.point.add()
         data = [['time', 'CO2', 'NH3', 'NOx']]
         points = Point.objects.all().filter(flight=Flight.objects.all().get(id=self.id))
         for point in points:
             data.append([(point.time).encode('utf-8'), point.c02, point.nh3, point.nox])
-        print data
         return data
     
 class Point_model(object):
