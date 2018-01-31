@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-
-<table>
+<table class="table">
     <tr>
         <th>id</th>
         <th>time</th>
@@ -12,7 +11,6 @@
         <th>Nh3</th>
         <th>Nox</th>
    </tr>
-   
     {% for point in data.points %}
     <tr>
         <td>{{ point.id|safe }}</td>
@@ -24,8 +22,6 @@
         <td>{{ point.nox|safe }}</td>
     </tr>
     {% endfor %}
-
-
 </table>
 {% endblock %}
         
