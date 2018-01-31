@@ -8,7 +8,7 @@
     </table>
     <div class="line_horizontal center"></div>
     {% for flight in homedata.flight %}
-    {%if flight.project.name == project.name %}
+    {%if flight.project.id == project.id %}
     <table class="back">
         <tr><td colspan="2"><h2 class="center">{{ flight.name }}</h2></td></tr>
         <tr><td colspan="2"><h4 class="center">{{ flight.time }}</h4></td></tr>

@@ -65,3 +65,6 @@ def point(request, id):
     point = Point_model(id)
     data = point.view()
     return render(request, 'point.html', {"data":data})
+
+def about(request):
+    return render(request, 'about.html')
