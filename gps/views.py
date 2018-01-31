@@ -4,7 +4,7 @@ from forms import FlightForm, ProjectForm
 from models import Flight, Project
 from django.http import Http404
 from django.template import Context
-from gps.analysers import Charts, Point_model, Maps
+from gps.analysers import Charts, Point_viewer
 
 def home(request):
     flight = Flight.objects.all()
@@ -33,8 +33,8 @@ def delete_flight(request, id):
     return HttpResponseRedirect('/')
 
 def mapsviews(request, id):
-    maps = Maps(id)
-    data = maps.context()
+    point_viewer = Point_viewer(id)
+    data = point_viewer.context()
     return render(request, 'maps.html', Context(data))
 
 def add_project(request):
@@ -62,9 +62,15 @@ def analyse(request, id):
     return render(request, 'analyse.html', {"data": data})
 
 def point(request, id):
-    point = Point_model(id)
+    point = Point_viewer(id)
     data = point.view()
     return render(request, 'point.html', {"data":data})
 
 def about(request):
     return render(request, 'about.html')
+
+def table(request, id):
+    point_viewer = Point_viewer(id)
+    data = point_viewer.context()
+    return render(request, 'table.html', Context(data))
+

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>time</th>
+        <th>lat</th>
+        <th>lng</th>
+        <th>Co2</th>
+        <th>Nh3</th>
+        <th>Nox</th>
+   </tr>
+   
+    {% for point in data.points %}
+    <tr>
+        <td>{{ point.id|safe }}</td>
+        <td>{{ point.time|safe }}</td>
+        <td>{{ point.lat|safe }}</td>
+        <td>{{ point.lon|safe }}</td>
+        <td>{{ point.c02|safe }}</td>
+        <td>{{ point.nh3|safe }}</td>
+        <td>{{ point.nox|safe }}</td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+{% endblock %}
+        

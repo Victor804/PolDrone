@@ -14,7 +14,7 @@ class Charts(object):
             data.append([(point.time).encode('utf-8'), point.c02, point.nh3, point.nox])
         return data
     
-class Point_model(object):
+class Point_viewer(object):
     def __init__(self, id):
         self.id = id
 
@@ -33,16 +33,11 @@ class Point_model(object):
         data = Point.objects.all().get(id=self.id)
         return data
         
-class Maps(object):
-    def __init__(self, id):
-        self.id = id
-        self.point_model = Point_model(id)
-        
-    def points(self):
-        self.point_model.add()
+    def points_filter(self):
+        self.add()
         points = Point.objects.all().filter(flight=Flight.objects.all().get(id=self.id))
         return points 
     
     def context(self):
-        data = {"data":{"points":self.points(), "center":self.points()[0]}}
+        data = {"data":{"points":self.points_filter(), "center":self.points_filter()[0]}}
         return data
