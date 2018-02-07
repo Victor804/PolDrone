@@ -3,7 +3,6 @@
 {% block content %}
 <table class="table">
     <tr>
-        <th>id</th>
         <th>time</th>
         <th>lat</th>
         <th>lng</th>
@@ -13,7 +12,6 @@
    </tr>
     {% for point in data.points %}
     <tr>
-        <td>{{ point.id|safe }}</td>
         <td>{{ point.time|safe }}</td>
         <td>{{ point.lat|safe }}</td>
         <td>{{ point.lon|safe }}</td>
