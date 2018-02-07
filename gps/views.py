@@ -35,7 +35,7 @@ def delete_flight(request, id):
 def mapsviews(request, id):
     point_viewer = Point_viewer(id)
     data = point_viewer.context()
-    return render(request, 'maps.html', Context(data))
+    return render(request, 'maps.html', data)
 
 def add_project(request):
     if request.method == 'POST':
@@ -72,5 +72,5 @@ def about(request):
 def table(request, id):
     point_viewer = Point_viewer(id)
     data = point_viewer.context()
-    return render(request, 'table.html', Context(data))
+    return render(request, 'table.html', data)
 

@@ -5,7 +5,7 @@ from django.conf import settings
 class Charts(object):
     def __init__(self, id):
         self.id = id
-        self.point = Point_model(id)
+        self.point = Point_viewer(id)
     def curve_chart(self):
         self.point.add()
         data = [['time', 'CO2', 'NH3', 'NOx']]
