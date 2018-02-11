@@ -32,10 +32,28 @@ def delete_flight(request, id):
     instance.delete()
     return HttpResponseRedirect('/')
 
-def mapsviews(request, id):
-    point_viewer = Point_viewer(id)
-    data = point_viewer.context()
-    return render(request, 'maps.html', data)
+def choose_maps(request, id):
+    return render(request, 'choose_maps.html', {"id": id})
+
+def waypoint(request, id):
+    points = Point_viewer(id)
+    data = points.context()
+    return render(request, 'waypoint.html', data)
+
+def heatmap_co2(request, id):
+    points = Point_viewer(id)
+    data = points.context()
+    return render(request, 'heatmap_co2.html', data)
+
+def heatmap_nh3(request, id):
+    points = Point_viewer(id)
+    data = points.context()
+    return render(request, 'heatmap_nh3.html', data)
+
+def heatmap_nox(request, id):
+    points = Point_viewer(id)
+    data = points.context()
+    return render(request, 'heatmap_nox.html', data)
 
 def add_project(request):
     if request.method == 'POST':

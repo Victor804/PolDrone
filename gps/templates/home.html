@@ -15,7 +15,7 @@
         <tr><td colspan="2" class="center">{{ flight.description }}</td></tr>
         <tr>
             <td><a href="/delete_flight/{{flight.id}}"><img src="{% static "images/delete.png" %}" alt="delete" width="20" height="20"/></a>
-            <a href="/maps/{{flight.id}}"><img src="{% static "images/maps.jpg" %}" alt="maps" width="25" height="20"/></a>
+            <a href="/choose_maps/{{flight.id}}"><img src="{% static "images/maps.jpg" %}" alt="maps" width="25" height="20"/></a>
             <td><a href="/analyse/{{flight.id}}"><img src="{% static "images/graph.png" %}" alt="graph" width="25" height="20"/></a>
             <a  href="/table/{{flight.id}}"><img style="margin-left:10px"src="{% static "images/table.jpg" %}" alt="graph" width="25" height="20"/></a></td>
         </tr>

@@ -1,13 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <trkseg>
-    <trkpt lat='48.365375' lon='00.7409373' hour='0' co2='100' nh3='150' nox='200'>
+    <trkpt lat='49.084960' lon='00.593772' hour='0' co2='100' nh3='150' nox='200'>
     </trkpt>
-    <trkpt lat='58.365375' lon='00.7409373' hour='5' co2='90' nh3='110' nox='250'>
+    <trkpt lat='49.085069' lon='00.593605' hour='5' co2='90' nh3='110' nox='250'>
     </trkpt>
-    <trkpt lat='29.666315' lon='02.3609373' hour='10' co2='90' nh3='110' nox='250'>
+    <trkpt lat='49.085155' lon='00.593523' hour='10' co2='90' nh3='110' nox='250'>
     </trkpt>
 </trkseg>
-
-    
-
-        

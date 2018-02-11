@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<a href="/waypoint/{{id}}"><img src="{% static "images/waypoint.png" %}" alt="waypoint" width="200" height="200"/></a>
+	<a href="/heatmap_co2/{{id}}"><img src="{% static "images/heatmap_co2.png" %}" alt="heatmap_co2" width="200" height="200"/></a>
+	<a href="/heatmap_nh3/{{id}}"><img src="{% static "images/heatmap_nh3.png" %}" alt="heatmap_nh3" width="200" height="200"/></a>
+	<a href="/heatmap_nox/{{id}}"><img src="{% static "images/heatmap_nox.png" %}" alt="heatmap_nox" width="200" height="200"/></a>
+{% endblock %}
