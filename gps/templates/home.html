@@ -10,14 +10,13 @@
     {% for flight in homedata.flight %}
     {%if flight.project.id == project.id %}
     <table class="back">
-        <tr><td colspan="2"><h2 class="center">{{ flight.name }}</h2></td></tr>
+        <tr><td colspan="2"><h2 class="center">{{ flight.name }}</h2></td><td><a href="/delete_flight/{{flight.id}}"><img src="{% static "images/delete.png" %}" alt="delete" width="20" height="20"/></a></td></tr>
         <tr><td colspan="2"><h4 class="center">{{ flight.time }}</h4></td></tr>
         <tr><td colspan="2" class="center">{{ flight.description }}</td></tr>
         <tr>
-            <td><a href="/delete_flight/{{flight.id}}"><img src="{% static "images/delete.png" %}" alt="delete" width="20" height="20"/></a>
-            <a href="/choose_maps/{{flight.id}}"><img src="{% static "images/maps.jpg" %}" alt="maps" width="25" height="20"/></a>
-            <td><a href="/analyse/{{flight.id}}"><img src="{% static "images/graph.png" %}" alt="graph" width="25" height="20"/></a>
-            <a  href="/table/{{flight.id}}"><img style="margin-left:10px"src="{% static "images/table.jpg" %}" alt="graph" width="25" height="20"/></a></td>
+            <td><a href="/choose_maps/{{flight.id}}"><img src="{% static "images/maps.jpg" %}" alt="maps" width="25" height="20"/></a></td>
+            <td><a href="/analyse/{{flight.id}}"><img src="{% static "images/graph.png" %}" alt="graph" width="25" height="20"/></a></td>
+            <td><a  href="/table/{{flight.id}}"><img src="{% static "images/table.jpg" %}" alt="graph" width="25" height="20"/></a></td>
         </tr>
     </table>
     {% endif %}
