@@ -6,7 +6,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     def __unicode__(self):
-        return "{0} [{1}]".format(self.name, self.description)
+        return "{0}".format(self.name)
 
 class Flight(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)

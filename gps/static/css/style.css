@@ -37,14 +37,11 @@ html, body {
     height: 100%;    
 }
 
-.nav_bar{
-    display: inline-block;
-    margin-left: 16px;
-    margin-top: 20px;
-
-}
-
 .table{
     border-collapse: collapse;
 }
 
+.about{
+    text-align: right;
+    margin-right: 15px;
+}

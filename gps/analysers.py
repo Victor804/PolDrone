@@ -41,3 +41,6 @@ class Point_viewer(object):
     def context(self):
         data = {"data":{"points":self.points_filter(), "center":self.points_filter()[0]}}
         return data
+
+def compare(id):
+    pass

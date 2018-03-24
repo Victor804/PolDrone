@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'delete_project/(?P<id>\d+)/$', delete_project),
     url(r'point/(?P<id>\d+)/$', point, name="point"),
     url(r'table/(?P<id>\d+)/$', table, name="table"),
+    url(r'compare/(?P<id>\d+)/$', compare, name="compare"),
     url(r'^about/$', about, name="about"),
 ]
 

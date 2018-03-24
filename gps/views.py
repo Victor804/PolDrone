@@ -92,3 +92,6 @@ def table(request, id):
     data = point_viewer.context()
     return render(request, 'table.html', data)
 
+def compare(request, id):
+    pass
+

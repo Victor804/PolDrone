@@ -6,6 +6,7 @@
     <table class="center">
         <tr><td><h1>{{ project.name }}<h1></td><td><a href="/delete_project/{{project.id}}"><img src="{% static "images/delete.png" %}" alt="delete" width="20" height="20"/></a></td></tr>
     </table>
+    
     <div class="line_horizontal center"></div>
     {% for flight in homedata.flight %}
     {%if flight.project.id == project.id %}
